@@ -1,1 +1,1 @@
-This is covet demo;
+This is covet demo
