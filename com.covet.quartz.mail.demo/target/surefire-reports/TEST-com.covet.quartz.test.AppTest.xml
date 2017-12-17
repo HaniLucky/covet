@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite failures="0" time="0.002" errors="0" skipped="0" tests="0" name="com.covet.quartz.test.AppTest">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="D:\develop\Java\jdk1.7.0_79\jre\bin"/>
+    <property name="java.vm.version" value="24.79-b02"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.script" value=""/>
+    <property name="user.country" value="CN"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="Service Pack 1"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="D:\workspace_v1.2\com.covet.quartz.mail.demo"/>
+    <property name="java.runtime.version" value="1.7.0_79-b15"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="basedir" value="D:\workspace_v1.2\com.covet.quartz.mail.demo"/>
+    <property name="java.endorsed.dirs" value="D:\develop\Java\jdk1.7.0_79\jre\lib\endorsed"/>
+    <property name="os.arch" value="x86"/>
+    <property name="surefire.real.class.path" value="D:\workspace_v1.2\com.covet.quartz.mail.demo\target\surefire\surefirebooter2761511233294402584.jar"/>
+    <property name="java.io.tmpdir" value="C:\Users\issuser\AppData\Local\Temp\"/>
+    <property name="line.separator" value="
+"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.variant" value=""/>
+    <property name="os.name" value="Windows 7"/>
+    <property name="sun.jnu.encoding" value="GBK"/>
+    <property name="java.library.path" value="D:\develop\Java\jdk1.7.0_79\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;D:/develop/Java/jdk1.7.0_79/bin/../jre/bin/client;D:/develop/Java/jdk1.7.0_79/bin/../jre/bin;D:/develop/Java/jdk1.7.0_79/bin/../jre/lib/i386;D:\develop\Java\jdk1.7.0_79\bin;C:\ProgramData\Oracle\Java\javapath;.;D:\develop\apache-maven-3.0.3\bin;C:\Windows\system32;D:\develop\MySQL\bin;D:\develop\TortoiseSVN\bin;D:\develop\eclipse;;."/>
+    <property name="surefire.test.class.path" value="D:\workspace_v1.2\com.covet.quartz.mail.demo\target\test-classes;D:\workspace_v1.2\com.covet.quartz.mail.demo\target\classes;D:\alltrust_anxin\repo\Central\org\springframework\spring-beans\3.1.2.RELEASE\spring-beans-3.1.2.RELEASE.jar;D:\alltrust_anxin\repo\Central\org\springframework\spring-context\3.1.2.RELEASE\spring-context-3.1.2.RELEASE.jar;D:\alltrust_anxin\repo\Central\org\springframework\spring-aop\3.1.2.RELEASE\spring-aop-3.1.2.RELEASE.jar;D:\alltrust_anxin\repo\Central\org\springframework\spring-asm\3.1.2.RELEASE\spring-asm-3.1.2.RELEASE.jar;D:\alltrust_anxin\repo\Central\org\springframework\spring-core\3.1.2.RELEASE\spring-core-3.1.2.RELEASE.jar;D:\alltrust_anxin\repo\Central\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar;D:\alltrust_anxin\repo\Central\org\springframework\spring-expression\3.1.2.RELEASE\spring-expression-3.1.2.RELEASE.jar;D:\alltrust_anxin\repo\Central\org\quartz-scheduler\quartz\2.2.1\quartz-2.2.1.jar;D:\alltrust_anxin\repo\Central\c3p0\c3p0\0.9.1.1\c3p0-0.9.1.1.jar;D:\alltrust_anxin\repo\Central\org\slf4j\slf4j-api\1.6.6\slf4j-api-1.6.6.jar;D:\alltrust_anxin\repo\Central\org\springframework\spring-context-support\3.1.2.RELEASE\spring-context-support-3.1.2.RELEASE.jar;D:\alltrust_anxin\repo\Central\org\springframework\spring-tx\3.1.2.RELEASE\spring-tx-3.1.2.RELEASE.jar;D:\alltrust_anxin\repo\Central\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;D:\alltrust_anxin\repo\Central\log4j\log4j\1.2.14\log4j-1.2.14.jar;D:\alltrust_anxin\repo\Central\javax\mail\mail\1.4.7\mail-1.4.7.jar;D:\alltrust_anxin\repo\Central\javax\activation\activation\1.1\activation-1.1.jar;D:\alltrust_anxin\repo\Central\commons-io\commons-io\2.4\commons-io-2.4.jar;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="51.0"/>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
+    <property name="os.version" value="6.1"/>
+    <property name="user.home" value="C:\Users\issuser"/>
+    <property name="user.timezone" value=""/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="java.specification.version" value="1.7"/>
+    <property name="file.encoding" value="GBK"/>
+    <property name="user.name" value="issuser"/>
+    <property name="java.class.path" value="D:\workspace_v1.2\com.covet.quartz.mail.demo\target\test-classes;D:\workspace_v1.2\com.covet.quartz.mail.demo\target\classes;D:\alltrust_anxin\repo\Central\org\springframework\spring-beans\3.1.2.RELEASE\spring-beans-3.1.2.RELEASE.jar;D:\alltrust_anxin\repo\Central\org\springframework\spring-context\3.1.2.RELEASE\spring-context-3.1.2.RELEASE.jar;D:\alltrust_anxin\repo\Central\org\springframework\spring-aop\3.1.2.RELEASE\spring-aop-3.1.2.RELEASE.jar;D:\alltrust_anxin\repo\Central\org\springframework\spring-asm\3.1.2.RELEASE\spring-asm-3.1.2.RELEASE.jar;D:\alltrust_anxin\repo\Central\org\springframework\spring-core\3.1.2.RELEASE\spring-core-3.1.2.RELEASE.jar;D:\alltrust_anxin\repo\Central\commons-logging\commons-logging\1.1.1\commons-logging-1.1.1.jar;D:\alltrust_anxin\repo\Central\org\springframework\spring-expression\3.1.2.RELEASE\spring-expression-3.1.2.RELEASE.jar;D:\alltrust_anxin\repo\Central\org\quartz-scheduler\quartz\2.2.1\quartz-2.2.1.jar;D:\alltrust_anxin\repo\Central\c3p0\c3p0\0.9.1.1\c3p0-0.9.1.1.jar;D:\alltrust_anxin\repo\Central\org\slf4j\slf4j-api\1.6.6\slf4j-api-1.6.6.jar;D:\alltrust_anxin\repo\Central\org\springframework\spring-context-support\3.1.2.RELEASE\spring-context-support-3.1.2.RELEASE.jar;D:\alltrust_anxin\repo\Central\org\springframework\spring-tx\3.1.2.RELEASE\spring-tx-3.1.2.RELEASE.jar;D:\alltrust_anxin\repo\Central\aopalliance\aopalliance\1.0\aopalliance-1.0.jar;D:\alltrust_anxin\repo\Central\log4j\log4j\1.2.14\log4j-1.2.14.jar;D:\alltrust_anxin\repo\Central\javax\mail\mail\1.4.7\mail-1.4.7.jar;D:\alltrust_anxin\repo\Central\javax\activation\activation\1.1\activation-1.1.jar;D:\alltrust_anxin\repo\Central\commons-io\commons-io\2.4\commons-io-2.4.jar;"/>
+    <property name="java.vm.specification.version" value="1.7"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.home" value="D:\develop\Java\jdk1.7.0_79\jre"/>
+    <property name="sun.java.command" value="D:\workspace_v1.2\com.covet.quartz.mail.demo\target\surefire\surefirebooter2761511233294402584.jar D:\workspace_v1.2\com.covet.quartz.mail.demo\target\surefire\surefire76367012447239754tmp D:\workspace_v1.2\com.covet.quartz.mail.demo\target\surefire\surefire995695747446160670tmp"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="zh"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="java.version" value="1.7.0_79"/>
+    <property name="java.ext.dirs" value="D:\develop\Java\jdk1.7.0_79\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="sun.boot.class.path" value="D:\develop\Java\jdk1.7.0_79\jre\lib\resources.jar;D:\develop\Java\jdk1.7.0_79\jre\lib\rt.jar;D:\develop\Java\jdk1.7.0_79\jre\lib\sunrsasign.jar;D:\develop\Java\jdk1.7.0_79\jre\lib\jsse.jar;D:\develop\Java\jdk1.7.0_79\jre\lib\jce.jar;D:\develop\Java\jdk1.7.0_79\jre\lib\charsets.jar;D:\develop\Java\jdk1.7.0_79\jre\lib\jfr.jar;D:\develop\Java\jdk1.7.0_79\jre\classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="localRepository" value="D:\alltrust_anxin\repo\Central"/>
+    <property name="file.separator" value="\"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+  </properties>
+</testsuite>

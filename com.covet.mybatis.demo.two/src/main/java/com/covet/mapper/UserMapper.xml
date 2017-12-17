@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：命名空间，用于隔离sql，还有一个很重要的作用 -->
+<mapper namespace="com.covet.mapper.UserMapper">
+
+	<!-- 根据id查询 -->
+	<!-- id:statement的id 或者叫做sql的id -->
+	<!-- parameterType:声明输入参数的类型 -->
+	<!-- resultType:声明输出结果的类型，应该填写pojo的全路径 -->
+	<!-- #{}：输入参数的占位符，相当于jdbc的？ -->
+	<select id="queryUserById" parameterType="int" resultType="user">
+		SELECT * FROM user WHERE id = #{id}
+	</select>
+
+	<!-- 模糊查询1 -->
+	<!-- 如果返回多个结果，mybatis会自动把返回的结果放在list容器中 -->
+	<!-- resultType的配置和返回一个结果的配置一样 -->
+	<select id="queryUserByUsername1" parameterType="string"
+		resultType="user">
+		SELECT * FROM `user` WHERE username LIKE #{username}
+	</select>
+
+
+	<!-- 模糊查询2 -->
+	<select id="queryUserByUsername2" parameterType="string"
+		resultType="user">
+		SELECT * FROM `user` WHERE username LIKE '%${value}%'
+	</select>
+
+
+	<!-- 保存用户 -->
+	<insert id="saveUser" parameterType="user">
+		<!-- selectKey 标签实现主键返回 -->
+		<!-- keyColumn:主键对应的表中的哪一列 -->
+		<!-- keyProperty：主键对应的pojo中的哪一个属性 -->
+		<!-- order：设置在执行insert语句前执行查询id的sql，还是在执行insert语句之后执行查询id的sql -->
+		<!-- resultType：设置返回的id的类型 -->
+		<selectKey keyColumn="id" keyProperty="id" order="AFTER"
+			resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO `user`
+		(username,birthday,sex,address) VALUES
+		(#{username},#{birthday},#{sex},#{address})
+	</insert>
+
+
+	<!-- 更新用户 -->
+	<update id="updateUserById" parameterType="user">
+		UPDATE `user` SET
+		username = #{username} WHERE id = #{id}
+	</update>
+
+	<!-- 删除用户 -->
+	<delete id="deleteUserById" parameterType="int">
+		DELETE from `user`
+		WHERE
+		id = #{id}
+	</delete>
+
+
+	<!-- 查询总数 -->
+	<select id="selectUserCount" resultType="int">
+		SELECT COUNT(*) FROM
+		`user`
+	</select>
+
+	<!-- QueryVo查询 -->
+	<select id="queryUserByQueryVo" parameterType="user" resultType="queryVo">
+		SELECT * FROM user
+		WHERE
+		username LIKE #{user.username}
+	</select>
+
+
+	<!-- if条件查询 -->
+	<select id="queryUserByIf" parameterType="user" resultType="user">
+		SELECT `id`,`username`,`birthday`,`sex`,`address`
+		FROM `user`
+		WHERE 1=1
+		<if test="sex!=null and sex != ''">
+			AND sex = #{sex}
+		</if>
+		<if test="username!=null and username != ''">
+			AND username LIKE '%${username}%'
+		</if>
+	</select>
+
+
+	<!-- 使用where条件进行条件查询 -->
+	<select id="queryUserByWhere" parameterType="user" resultType="user">
+		SELECT `id`,`username`,`birthday`,`sex`,`address`
+		FROM `user`
+		<!-- where标签自动添加where 并且会自动处理第一个AND -->
+		<where>
+			<if test="sex != null and sex != ''">
+				AND sex = #{sex}
+			</if>
+			<if test="username != null and username != ''">
+				AND username LIKE '%${username}%'
+			</if>
+		</where>
+	</select>
+
+
+	<!-- 使用where条件进行条件查询 使用sql片段 -->
+	<select id="queryUserByWhere2" parameterType="user" resultType="user">
+		<!-- 引用sql片段 -->
+		SELECT
+		<include refid="userFields"></include>
+		FROM `user`
+		<!-- where标签自动添加where 并且会自动处理第一个AND -->
+		<where>
+			<if test="sex != null and sex != ''">
+				AND sex = #{sex}
+			</if>
+			<if test="username != null and username != ''">
+				AND username LIKE '%${username}%'
+			</if>
+		</where>
+	</select>
+	<!-- 使用where条件进行条件查询 使用sql片段(引用别的sql片段) -->
+	<select id="queryUserByWhere3" parameterType="user" resultType="user">
+		<!-- 引用别的sql片段 -->
+		SELECT
+		<include refid="com.covet.mapper.OrderMapper.userFields"></include>
+		FROM `user`
+		<!-- where标签自动添加where 并且会自动处理第一个AND -->
+		<where>
+			<if test="sex != null and sex != ''">
+				AND sex = #{sex}
+			</if>
+			<if test="username != null and username != ''">
+				AND username LIKE '%${username}%'
+			</if>
+		</where>
+	</select>
+
+
+	<!-- foreach标签的使用 查询SELECT * FROM user WHERE id IN (1,10,24) -->
+	<select id="queryUserByIds" parameterType="queryVo" resultType="user">
+		SELECT
+		<include refid="userFields"></include>
+		FROM `user`
+		<where>
+			<!-- foreach标签，进行遍历 -->
+			<!-- collection：遍历的集合，这里是QueryVo的ids属性 -->
+			<!-- item：遍历的项目，可以随便写，，但是和后面的#{}里面要一致 -->
+			<!-- open：在前面添加的sql片段 -->
+			<!-- close：在结尾处添加的sql片段 -->
+			<!-- separator：指定遍历的元素之间使用的分隔符 -->
+			<!-- 注意open="id IN (" close=")"之间的空格 -->
+			<foreach collection="ids" item="item" open="id IN (" close=")"
+				separator=",">
+				#{item}
+			</foreach>
+		</where>
+	</select>
+
+	<!-- 一对一查询 使用requltType -->
+	<select id="queryOrderUser" resultType="orderUser">
+		SELECT
+		o.id,
+		o.user_id
+		userId,
+		o.number,
+		o.createtime,
+		o.note,
+		u.username,
+		u.address
+		FROM
+		`orders` o
+		LEFT JOIN `user` u ON o.user_id = u.id
+	</select>
+
+
+	<!-- 一对一查询 使用resultMap -->
+	<select id="queryOrderByResultMap" resultMap="orderUserResultMap">
+		SELECT
+		o.id,
+		o.user_id,
+		o.number,
+		o.createtime,
+		o.note,
+		u.username,
+		u.address
+		FROM
+		`orders` o
+		LEFT JOIN `user` u ON o.user_id = u.id
+	</select>
+
+	<resultMap type="order" id="orderUserResultMap">
+		<id property="id" column="id" />
+		<result property="userId" column="user_id" />
+		<result property="number" column="number" />
+		<result property="createtime" column="createtime" />
+		<result property="note" column="note" />
+		<association property="user" javaType="user">
+
+			<id property="id" column="id" />
+			<result property="username" column="username" />
+			<result property="address" column="address" />
+		</association>
+	</resultMap>
+
+<!-- ======================一对多=========================== -->
+	<resultMap type="user" id="userOrderResultMap">
+		<id property="id" column="id" />
+		<result property="username" column="username" />
+		<result property="birthday" column="birthday" />
+		<result property="sex" column="sex" />
+		<result property="address" column="address" />
+
+		<!-- 配置一对多的关系 -->
+		<collection property="orders" javaType="list" ofType="order">
+			<!-- 配置主键，是关联Order的唯一标识 -->
+			<id property="id" column="oid" />
+			<result property="number" column="number" />
+			<result property="createtime" column="createtime" />
+			<result property="note" column="note" />
+		</collection>
+	</resultMap>
+
+	<!-- 一对多关联，查询订单同时查询该用户下的订单 -->
+	<select id="queryUserOrder" resultMap="userOrderResultMap">
+		SELECT
+		u.id,
+		u.username,
+		u.birthday,
+		u.sex,
+		u.address,
+		o.id oid,
+		o.number,
+		o.createtime,
+		o.note
+		FROM
+		`user` u
+		LEFT JOIN `orders` o ON u.id = o.user_id
+	</select>
+<!-- ======================一对多=========================== -->
+	<!-- sql片段 -->
+	<sql id="userFields">
+		`id`,`username`,`birthday`,`sex`,`address`
+	</sql>
+
+</mapper>

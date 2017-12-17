@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+	<!-- (定时任务)工作的bean -->
+	<!-- <bean id="myJob" class="com.covet.quartz.job.QuartzJob" /> -->
+	<bean id="timingMailJob" class="com.covet.mail.TimingSendMailJob"></bean>
+	
+
+	<!-- job的配置开始 --><!-- 定时发送邮件 -->
+	<bean id="myJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 目标对象 (要进行定时任务的实例) -->
+		<property name="targetObject">
+			<ref bean="timingMailJob" />
+		</property>
+		<!-- 目标方法 (要定时任务的方法) -->
+		<property name="targetMethod">
+			<value>timingMailJob</value>
+		</property>
+	</bean>
+	<!-- job的配置结束 -->
+
+
+	<!-- 调度的配置开始 -->
+	<bean id="crontestJobTrigger"
+		class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<!-- 工作细节 -->
+		<property name="jobDetail">
+			<ref bean="myJobDetail" />
+		</property>
+		<!-- cron表达式 -->
+		<property name="cronExpression">
+			 <value>0/30 * * * * ? </value> <!-- 从当前时间的第一个5秒开始 每5秒执行一次 -->
+			<!-- 10 0/1 * * * ? -->  <!-- Cron表达式“10 */1 * * * ?”意为：从10秒开始，每1分钟执行一次。 -->
+		</property>
+	</bean>
+	<!-- 调度的配置结束 -->
+
+
+	<!-- 启动触发器的配置开始 -->
+	<bean name="startQuertz" lazy-init="false" autowire="no"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<!-- 触发器 -->
+		<property name="triggers">
+			<list>
+				<ref bean="crontestJobTrigger" />
+			</list>
+		</property>
+	</bean>
+	<!-- 启动触发器的配置结束 -->
+</beans>  
+    
+    

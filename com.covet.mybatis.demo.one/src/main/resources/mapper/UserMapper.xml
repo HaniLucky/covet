@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：命名空间，用于隔离sql，还有一个很重要的作用-->
+<mapper namespace="com.covet.mapper.UserMapper">
+
+	<!-- 根据id查询 -->
+	<!-- id:statement的id 或者叫做sql的id -->
+	<!-- parameterType:声明输入参数的类型 -->
+	<!-- resultType:声明输出结果的类型，应该填写pojo的全路径 -->
+	<!-- #{}：输入参数的占位符，相当于jdbc的？ -->
+	<select id="queryUserById" parameterType="int" resultType="user">
+		SELECT * FROM user WHERE id = #{id}
+	</select>
+
+	<!-- 模糊查询1 -->
+	<!-- 如果返回多个结果，mybatis会自动把返回的结果放在list容器中 -->
+	<!-- resultType的配置和返回一个结果的配置一样 -->
+	<select id="queryUserByUsername1" parameterType="string"
+		resultType="user">
+		SELECT * FROM `user` WHERE username LIKE #{username}
+	</select>
+
+
+	<!-- 模糊查询2 -->
+	<select id="queryUserByUsername2" parameterType="string"
+		resultType="user">
+		SELECT * FROM `user` WHERE username LIKE '%${value}%'
+	</select>
+
+
+	<!-- 保存用户 -->
+	<insert id="saveUser" parameterType="user">
+		<!-- selectKey 标签实现主键返回 -->
+		<!-- keyColumn:主键对应的表中的哪一列 -->
+		<!-- keyProperty：主键对应的pojo中的哪一个属性 -->
+		<!-- order：设置在执行insert语句前执行查询id的sql，还是在执行insert语句之后执行查询id的sql -->
+		<!-- resultType：设置返回的id的类型 -->
+		<selectKey keyColumn="id" keyProperty="id" order="AFTER"
+			resultType="int">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO `user`
+		(username,birthday,sex,address) VALUES
+		(#{username},#{birthday},#{sex},#{address})
+	</insert>
+
+
+	<!-- 更新用户 -->
+	<update id="updateUserById" parameterType="user">
+		UPDATE `user` SET
+		username = #{username} WHERE id = #{id}
+	</update>
+	<!-- 删除用户 -->
+	<delete id="deleteUserById" parameterType="int">
+		DELETE from `user` WHERE
+		id = #{id}
+	</delete>
+	
+	<select id="selectUserCount" resultType="int">
+		SELECT COUNT(*) FROM `user`
+	</select>
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.covet.mapper.OrderMapper">
+	<resultMap type="order" id="orderResultMap">
+		<id property="id" column="id"/>
+		<result property="userId" column="user_id"/>
+		<result property="number" column="number"/>
+		<result property="createtime" column="createtime"/>
+		<result property="note" column="note"/>
+		
+	</resultMap>
+
+
+	<select id="queryAllOrder" resultMap="orderResultMap">
+		SELECT id, user_id,
+		number,
+		createtime, note FROM `orders`
+	</select>
+	
+	
+	<sql id="userFields">
+		`id`,`username`,`birthday`,`sex`,`address`
+	</sql>
+</mapper>
