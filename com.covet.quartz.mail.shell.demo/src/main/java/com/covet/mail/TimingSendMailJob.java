@@ -12,7 +12,6 @@ public class TimingSendMailJob {
 	public void timingMailJob() {
 		try {
 			logger.info("开始发送邮件.....");
-			
 			String isValate = "true";// 邮件授权
 			String to = "228321644@qq.com" ;// 收件人
 			String subject = "测试主题";// 邮件主题

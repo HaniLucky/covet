@@ -13,23 +13,18 @@
 		<!-- spring 基本包 begin -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-beans</artifactId>
-			<version>3.1.2.RELEASE</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>3.1.2.RELEASE</version>
+			<version>4.1.3.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
-			<version>3.1.2.RELEASE</version>
+			<version>4.1.3.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-expression</artifactId>
-			<version>3.1.2.RELEASE</version>
+			<version>4.1.3.RELEASE</version>
 		</dependency>
 		<!-- spring 基本包 end -->
 
@@ -45,22 +40,17 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
-			<version>3.1.2.RELEASE</version>
+			<version>4.1.3.RELEASE</version>
 		</dependency>
 		<!-- spring外部依赖组件 quzrt支持需要 -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
-			<version>3.1.2.RELEASE</version>
+			<version>4.1.3.RELEASE</version>
 		</dependency>
 		<!-- quertz 需要的依赖 end -->
 
 		<!-- log4j日志包 -->
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.14</version>
-		</dependency>
 
 		<!-- 邮件start -->
 		<dependency>
@@ -81,6 +71,11 @@
 
 
 
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.6.4</version>
+		</dependency>
 	</dependencies>
 
 	<build>

@@ -17,7 +17,7 @@ public class Shell {
 			appContext.registerShutdownHook();
 			appContext.start();
 			log.info("初始化context:" + beanConfig);
-			log.info(" ** 自主理赔 异步Job Service started. ** 启动耗时: " + (System.currentTimeMillis() - startTime) + " ms. ");
+			log.info(" ** 自动发送邮件系统启动成功 ** 启动耗时: " + (System.currentTimeMillis() - startTime) + " ms. ");
 		} catch (Exception e) {
 			log.error("Shell 脚本启动异常！", e);
 			appContext.destroy();
