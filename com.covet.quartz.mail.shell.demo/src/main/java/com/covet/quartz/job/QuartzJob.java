@@ -2,10 +2,6 @@ package com.covet.quartz.job;
 
 import java.util.Date;
 
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
-import org.springframework.scheduling.quartz.QuartzJobBean;
-
 /**
  * quarzt工作的类
  */

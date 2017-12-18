@@ -1,10 +1,24 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.covet.demo</groupId>
-  <artifactId>com.covet.mail.demo</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  
-  	<dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.covet.demo</groupId>
+	<artifactId>com.covet.mail.demo</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<build>
+		<plugins>
+			<!-- 指定JDK版本为1.7 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
 		<!-- spring 基本包 begin -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -42,5 +56,5 @@
 			<version>1.4.7</version>
 		</dependency>
 		<!-- 邮件end -->
-		</dependencies>
+	</dependencies>
 </project>

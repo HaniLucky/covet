@@ -7,19 +7,30 @@
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>com.covet.spring.dubbo.provide</artifactId>
-	
+	<build>
+		<plugins>
+			<!-- 指定JDK版本为1.7 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
 	<properties>
 		<spring.version>3.1.1.RELEASE</spring.version>
 	</properties>
 	<dependencies>
-	
-	
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
+
 		<!-- dubbo相关配置 -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -46,7 +57,7 @@
 			<artifactId>zkclient</artifactId>
 			<version>0.1</version>
 		</dependency>
-		
+
 		<!-- api -->
 		<dependency>
 			<groupId>com.covet.demo</groupId>

@@ -5,10 +5,10 @@
 	<artifactId>com.covet.quartz.mail.shell.demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
- <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-    </properties>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+	</properties>
 	<dependencies>
 		<!-- spring 基本包 begin -->
 		<dependency>
@@ -84,64 +84,74 @@
 	</dependencies>
 
 	<build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>2.4.3</version>
-                <configuration>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.4.3</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
 
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <executions>  <!--执行器 mvn assembly:assembly-->
-                    <execution>
-                        <id>release</id>
-                        <!--名字任意 -->
-                        <phase>package</phase>
-                        <!-- 绑定到package生命周期阶段上 -->
-                        <goals>
-                            <goal>single</goal>
-                            <!-- 只运行一次 -->
-                        </goals>
-                        <configuration>
-                            <descriptors> <!--描述文件路径-->
-                                <descriptor>src/main/resources/run/assembly.xml</descriptor>
-                            </descriptors>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>  <!--执行器 mvn assembly:assembly -->
+					<execution>
+						<id>release</id>
+						<!--名字任意 -->
+						<phase>package</phase>
+						<!-- 绑定到package生命周期阶段上 -->
+						<goals>
+							<goal>single</goal>
+							<!-- 只运行一次 -->
+						</goals>
+						<configuration>
+							<descriptors> <!--描述文件路径 -->
+								<descriptor>src/main/resources/run/assembly.xml</descriptor>
+							</descriptors>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<!-- 指定JDK版本为1.7 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
 
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**/*.properties</include>
-                    <include>**/*.xml</include>
-                </includes>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>**/*.properties</include>
-                    <include>**/*.xml</include>
-                </includes>
-            </resource>
-        </resources>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+		</resources>
 
-    </build>
+	</build>
 
 
 </project>

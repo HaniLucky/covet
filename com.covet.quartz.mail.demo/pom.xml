@@ -5,6 +5,7 @@
 	<artifactId>com.covet.quartz.mail.demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
+
 	<dependencies>
 		<!-- spring 基本包 begin -->
 		<dependency>
@@ -100,6 +101,17 @@
 						</configuration>
 					</execution>
 				</executions>
+			</plugin>
+
+
+			<!-- 指定JDK版本为1.7 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
