@@ -1,1 +1,14 @@
-This is covet demo
+com.covet.error.send.mail.demo      错误异常时发送邮件
+com.covet.mail.demo					发送邮件
+com.covet.mybatis.demo.one			mybatisONE
+com.covet.mybatis.demo.two			mybatisTWO
+com.covet.quartz.demo				Quqrtz定时任务
+com.covet.quartz.mail.demo			定时发送邮件
+com.covet.quartz.mail.shell.demo	使用脚本自动启动自动发送邮件
+com.covet.spring.dubbo.demo			dubbo
+com.covet.spring.mybatis.demo		mybatis与spring整合
+com.covet.springmvc.demo.one		springmvcONE
+com.covet.springmvc.demo.two		springmvcTWO
+generatorSqlmapCustom				mybatis逆向工程
+httpclientdemo						httpClient
+javaweb.demo.one					javaweb简单案例	
