@@ -20,6 +20,8 @@
 		<property name="maxActive" value="10" />
 		<property name="maxIdle" value="5" />
 	</bean>
+	
+	
 	<!-- mapper配置 -->
 	<!-- 让spring管理sqlsessionfactory 使用mybatis和spring整合包中的 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -34,5 +36,4 @@
 		<property name="basePackage" value="com.covet.mapper" />
 	</bean>
 	
-
 </beans>

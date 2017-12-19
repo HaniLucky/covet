@@ -12,12 +12,16 @@
 	<form
 		action="${pageContext.request.contextPath }/item/queryitem.action"
 		method="post">
+		
+		<!-- 查询条件输入框 -->
 		查询条件：
 		<table width="100%" border=1>
 			<tr>
 				<td><input type="submit" value="查询" /></td>
 			</tr>
 		</table>
+		
+		<!-- 商品展示区域 -->
 		商品列表：
 		<table width="100%" border=1>
 			<tr>
@@ -29,18 +33,17 @@
 			</tr>
 			<c:forEach items="${itemList }" var="item">
 				<tr>
+					<!-- 复选框 -->
 					<td><input name="ids" value="${item.id}" type="checkbox"/></td>
 					<td>${item.name }</td>
 					<td>${item.price }</td>
 					<td><fmt:formatDate value="${item.createtime}"
 							pattern="yyyy-MM-dd HH:mm:ss" /></td>
 					<td>${item.detail }</td>
-
 					<td><a
 						href="${pageContext.request.contextPath }/itemEdit.action?id=${item.id}">修改</a></td>
 				</tr>
 			</c:forEach>
-
 		</table>
 	</form>
 </body>

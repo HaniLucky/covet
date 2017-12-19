@@ -1,5 +1,7 @@
 package com.covet.controller;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.covet.po.Items;
+import com.covet.po.QueryVo;
 import com.covet.service.ItemService;
+import com.covet.util.CustomException;
 
 @Controller
 public class ItemController {
@@ -22,8 +26,8 @@ public class ItemController {
 	@Autowired
 	private ItemService itemService;
 
-	/** 获取所有条目 */
-	@RequestMapping("/itemList")
+	/** 获取所有条目 */ /** 多个路径映射同一个方法 */
+	@RequestMapping(value = {"/itemList","/itemlist","item"})
 	public ModelAndView getItemList() {
 		List<Items> list = itemService.getItemList();
 		ModelAndView modelAndView = new ModelAndView();
@@ -81,31 +85,36 @@ public class ItemController {
 
 	/**
 	 * =====================================简单类型数据绑定============================
-	 * =============
+	 * @throws CustomException 
 	 */
 	// @RequestMapping("itemEdit")
-	public String getItemById(Integer id, Model model) {
+	public String getItemById(Integer id, Model model) throws CustomException {
 		logger.info("简单类型数据绑定");
 		Items item = itemService.getItemById(id);
+		
 		model.addAttribute("item", item);
 		return "editItem";
 	}
 
 	/**
 	 * 使用@RequestParam绑定参数 value请求带过来的入参id required 属性必传
+	 * @throws CustomException 
 	 */
 	@RequestMapping("itemEdit")
-	public String getItemById2(@RequestParam(value = "id", required = true) Integer item_id, Model modle) {
+	public String getItemById2(@RequestParam(value = "id", required = true) Integer item_id, Model modle) throws CustomException {
 		// 使用@RequestParam绑定参数
 		logger.info("使用@RequestParam绑定参数");
 		Items item = itemService.getItemById(item_id);
+		
+		if (item == null) {
+			throw new CustomException("商品信息不存在");
+		}
 		modle.addAttribute("item", item);
 		return "editItem";
 	}
 
 	/**
 	 * =========================================================================
-	 * =================
 	 */
 	
 	/** 根据主键选择性更新数据 */
@@ -115,6 +124,4 @@ public class ItemController {
 		return "success";
 	}
 	
-	
-
 }

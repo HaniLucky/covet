@@ -81,7 +81,6 @@ public class ItemController {
 
 	/**
 	 * =====================================简单类型数据绑定============================
-	 * =============
 	 */
 	// @RequestMapping("itemEdit")
 	public String getItemById(Integer id, Model model) {
@@ -105,7 +104,6 @@ public class ItemController {
 
 	/**
 	 * =========================================================================
-	 * =================
 	 */
 	
 	/** 根据主键选择性更新数据 */
