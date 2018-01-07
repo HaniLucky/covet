@@ -1,0 +1,69 @@
+// 普通字符串
+Hello ${name}
+
+
+// javaBena  [?c]的作用 数字类型的时候会默认加百分位分隔符  使用?c进行限定 正常显示数字
+${person.id?c}
+${person.name}
+
+
+// List  _index 获取list的索引 索引可以进行计算
+<#list list as l>
+	${l_index+100}
+	${l.id?c}
+	${l.name}
+</#list>
+
+
+// map 第一种方式  使用于不知道Mapkey的情况   对Map的key进行遍历
+<#list map?keys as k>
+	${k}
+	${map[k].id?c}
+	${map[k].name}
+</#list>
+
+// map 第二种方式  使用知道Mapkey的情况   使用key直接取值
+${map.m1.id?c}
+${map.m1.name}
+${map.m2.id?c}
+${map.m2.name}
+${map.m3.id?c}
+${map.m3.name}
+
+
+// List<Map>  第一种方式  1.先遍历list中的map 2.遍历map中的key 3.取值
+<#list lm as lm>
+	<#list lm?keys as k>
+		${k}
+		${lm[k].id?c}
+		${lm[k].name}
+	</#list>
+</#list>
+
+// List<Map>  第二种方式  1.先遍历list中的map 2.通过map直接取值
+<#list lm as lm>
+	${lm.m1.id?c}
+	${lm.m1.name}
+	${lm.m2.id?c}
+	${lm.m2.name}
+</#list>
+
+
+// date
+${date?datetime}
+${date?date}
+${date?time}
+//yyyy年M月dd日 HH时mmm分ss秒SSS毫秒
+${date?string("yyyy年M月dd日 HH时mmm分ss秒SSS毫秒")}
+//yyyy年MM月dd日 HH时mm分ss秒SSS毫秒
+${date?string("yyyy年MM月dd日 HH时mm分ss秒SSS毫秒")}
+
+
+// null [!]代表为null值时的情况  后面可以跟字符串或者跟空串
+${test!"这是一个null值"}
+${test!""}
+${test!}
+
+
+// include
+<#include "ftl.ftl">
