@@ -4,7 +4,11 @@
 	<groupId>com.covet.demo</groupId>
 	<artifactId>com.covet.springmvc.demo.two</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	
+	<!-- web工程为war包 -->
 	<packaging>war</packaging>
+	
+	<!-- 插件配置 -->
 	<build>
 		<plugins>
 			<!-- 指定JDK版本为1.7 -->

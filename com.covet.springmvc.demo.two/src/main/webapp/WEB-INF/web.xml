@@ -30,14 +30,16 @@
 	
 	
 	<!-- 加载spring容器 -->
-	<context-param>
+	<context-param><!-- 指定spring配置文件 -->
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:spring/applicationContext-*.xml</param-value>
 	</context-param>
+	<!-- spring监听器内部代码获取获取contextConfigLocation的相关配置  项目启动时后去加载spring配置文件 -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
+	
+	
 	<!-- 加载springmvc DispatcherServlet -->
 	<servlet>
 		<servlet-name>springmvc</servlet-name>
